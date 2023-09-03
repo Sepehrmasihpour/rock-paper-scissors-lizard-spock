@@ -10,6 +10,7 @@ body {
   height: 100%;
   display: grid;
   grid-template-rows: 1fr 2fr 100px;
+  font-family: "Barlow Semi Condensed", sans-serif;
 }
 
 section1 {
@@ -28,4 +29,27 @@ section1 .score-board {
   justify-content: space-between;
   border-radius: 15px;
   padding: 20px 30px;
+}
+section1 .score-board div {
+  background-color: white;
+  width: 140px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+}
+section1 .score-board div .score {
+  margin: 0;
+  color: hsl(229, 64%, 46%);
+  font-weight: 700;
+  font-size: 23px;
+  margin-top: 10px;
+}
+section1 .score-board div .score-number {
+  margin: 0;
+  margin-bottom: 15px;
+  color: hsl(229, 25%, 31%);
+  font-size: 60px;
+  font-weight: bolder;
 }/*# sourceMappingURL=index.css.map */
