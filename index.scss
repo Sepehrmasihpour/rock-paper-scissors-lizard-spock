@@ -1,28 +1,41 @@
+// Mixin for filling up the entire space
 @mixin fill {
   width: 100%;
   height: 100%;
 }
+
+// Mixin for centering items using flex
 @mixin flex-center {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+
+// Mixin for removing margins
 @mixin zero-margin {
   margin: 0;
 }
+
+// Styling for the body element
 body {
   width: 100%;
   height: 100vh;
   margin: 0;
 }
+
+// Styling for the main container
 .container {
   background-image: radial-gradient(hsl(214, 47%, 23%), hsl(237, 49%, 15%));
+  // Applying fill mixin
   @include fill;
   display: grid;
   grid-template-rows: 1fr 2fr 100px;
   font-family: "Barlow Semi Condensed", sans-serif;
 }
+
+// Styling for section1
 section1 {
+  // Applying flex-center mixin
   @include flex-center;
   padding: 0px 450px;
   padding-top: 20px;
@@ -44,14 +57,19 @@ section1 {
       justify-content: space-between;
       flex-direction: column;
 
+      // Styling for the score element
       .score {
+        // Applying zero-margin mixin
         @include zero-margin;
         color: hsl(229, 64%, 46%);
         font-weight: 700;
         font-size: 23px;
         margin-top: 10px;
       }
+
+      // Styling for the score-number element
       .score-number {
+        // Applying zero-margin mixin
         @include zero-margin;
         margin-bottom: 15px;
         color: hsl(229, 25%, 31%);
