@@ -52,4 +52,15 @@ section1 .score-board div .score-number {
   color: hsl(229, 25%, 31%);
   font-size: 60px;
   font-weight: bolder;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 90px;
+}
+.options .scissors {
+  background-color: white;
+  width: 60px;
 }/*# sourceMappingURL=index.css.map */

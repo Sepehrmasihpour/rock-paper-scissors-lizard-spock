@@ -79,3 +79,11 @@ section1 {
     }
   }
 }
+.options {
+  @include flex-center;
+  margin-top: 90px;
+  .scissors {
+    background-color: white;
+    width: 60px;
+  }
+}
