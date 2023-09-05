@@ -1,7 +1,7 @@
 import "../styles/Options.scss";
 
 function Options() {
-  return <section2></section2>;
+  return <div className="Options"></div>;
 }
 
 export default Options;

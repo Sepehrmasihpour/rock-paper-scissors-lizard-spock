@@ -1,21 +1,5 @@
-@mixin fill {
-  width: 100%;
-  height: 100%;
-}
-
-// Mixin for centering items using flex
-@mixin flex-center {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-// Mixin for removing margins
-@mixin zero-margin {
-  margin: 0;
-}
 body {
-  @include zero-margin;
+  margin: 0;
 }
 #root {
   @extend body;

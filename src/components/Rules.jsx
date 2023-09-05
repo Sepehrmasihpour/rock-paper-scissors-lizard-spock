@@ -1,7 +1,7 @@
 import "../styles/Rules.scss";
 
 function Rules() {
-  return <section3></section3>;
+  return <div className="Rules"></div>;
 }
 
 export default Rules;
