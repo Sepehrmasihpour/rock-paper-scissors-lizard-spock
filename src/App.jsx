@@ -6,7 +6,7 @@ import "./App.scss";
 
 function App() {
   const [score, setSCore] = useState(0);
-  const [playerChoosing, setChoosing] = useState(true);
+  const [playerChoosing, setChoosing] = useState(false);
 
   const scorePlusOne = () => {
     setSCore((prevScore) => prevScore + 1);
@@ -14,9 +14,15 @@ function App() {
 
   return (
     <div className="container">
-      <ScoreBoard score={score} />
-      <Options />
-      <Rules />
+      {playerChoosing ? (
+        <>
+          <ScoreBoard score={score} />
+          <Options />
+          <Rules />
+        </>
+      ) : (
+        <p>bruh</p>
+      )}
     </div>
   );
 }
