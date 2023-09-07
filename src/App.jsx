@@ -6,7 +6,7 @@ import "./App.scss";
 
 function App() {
   const [score, setSCore] = useState(0);
-  const [playerChoosing, setChoosing] = useState(false);
+  const [playerChoosing, setChoosing] = useState(true);
 
   const scorePlusOne = () => {
     setSCore((prevScore) => prevScore + 1);

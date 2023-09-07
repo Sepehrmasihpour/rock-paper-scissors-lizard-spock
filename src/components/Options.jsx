@@ -7,7 +7,13 @@ import scissors from "../assets/icon-scissors.svg";
 import spock from "../assets/icon-spock.svg";
 
 function Options() {
-  return <div className="Options"></div>;
+  return (
+    <div className="Options">
+      <div className="pentagon">
+        <img src={pentagon} alt="" />
+      </div>
+    </div>
+  );
 }
 
 export default Options;
