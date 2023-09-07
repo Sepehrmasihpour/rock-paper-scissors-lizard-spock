@@ -1,0 +1,75 @@
+@use "base";
+
+@mixin option-circle(
+  $border-color: black,
+  $left: auto,
+  $right: auto,
+  $top: auto,
+  $bottom: auto
+) {
+  @include base.flex-center;
+  position: absolute;
+  background-color: white;
+  width: 85px;
+  height: 85px;
+  border-radius: 50%;
+  border: 13px solid;
+  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2) inset;
+  transition: all 0.5s;
+  border-color: $border-color;
+  left: $left;
+  right: $right;
+  top: $top;
+  bottom: $bottom;
+  left: $left;
+  right: $right;
+  top: $top;
+  bottom: $bottom;
+  img {
+    width: 50px;
+  }
+}
+@mixin option-hover($border-color: white) {
+  border-color: $border-color;
+}
+.pentagon {
+  @include base.flex-center;
+  position: relative;
+  margin-top: 90px;
+  .scissors {
+    @include option-circle(hsl(39, 89%, 49%), auto, auto, 0, auto);
+    margin-top: -40px;
+  }
+  .scissors:hover {
+    @include option-hover(hsl(40, 84%, 53%));
+  }
+  .paper {
+    @include option-circle(hsl(230, 89%, 62%), auto, 555px, 75px, auto);
+  }
+  .paper:hover {
+    @include option-hover(hsl(230, 89%, 65%));
+  }
+  .rock {
+    @include option-circle(hsl(349, 71%, 52%), auto, 620px, auto, 0px);
+    margin-bottom: -40px;
+  }
+  .rock:hover {
+    @include option-hover(hsl(349, 70%, 56%));
+  }
+  .lizard {
+    @include option-circle(hsl(261, 73%, 60%), 620px, auto, auto, 0px);
+    margin-bottom: -35px;
+  }
+  .lizard:hover {
+    @include option-hover(hsl(261, 72%, 63%));
+  }
+  .spock {
+    @include option-circle(hsl(189, 59%, 53%), 560px, auto, 72px);
+    img {
+      margin-left: 4px;
+    }
+  }
+  .spock:hover {
+    @include option-hover(hsl(189, 58%, 57%));
+  }
+}

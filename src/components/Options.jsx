@@ -11,6 +11,21 @@ function Options() {
     <div className="Options">
       <div className="pentagon">
         <img src={pentagon} alt="" />
+        <div className="scissors">
+          <img src={scissors} alt="" />
+        </div>
+        <div className="paper">
+          <img src={paper} alt="" />
+        </div>
+        <div className="rock">
+          <img src={rock} alt="" />
+        </div>
+        <div className="lizard">
+          <img src={lizard} alt="" />
+        </div>
+        <div className="spock">
+          <img src={spock} alt="" />
+        </div>
       </div>
     </div>
   );
