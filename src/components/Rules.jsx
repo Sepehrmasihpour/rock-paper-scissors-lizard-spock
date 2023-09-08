@@ -8,7 +8,7 @@ function Rules(props) {
       <div className="rules">
         <div className="rules-header">
           <h2>RULES</h2>
-          <img src={closeIcon} onClick={props.closeRules} alt="" />
+          <img src={closeIcon} onClick={() => props.closeRules(false)} alt="" />
         </div>
         <img src={rules} alt="" />
       </div>

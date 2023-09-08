@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import ScoreBoard from "./components/ScoreBoard.jsx";
 import Options from "./components/Options.jsx";
 import Rules from "./components/Rules.jsx";
+import Bottom from "./components/Bottom.jsx";
 import "./App.scss";
 
 function App() {
   const [score, setSCore] = useState(0); //the overall score of the player
   const [playerChoosing, setChoosing] = useState(true); //for conditionall rendering if the player is choosing or has chosen
-  const [showRules, setShow] = useState(true); //if true the rules will show
+  const [showRules, setShow] = useState(false); //if true the rules will show
   const [choice, setchoice] = useState(""); //the option that the player has chosen
   const [appChoice, setAppChoice] = useState(""); //the option that the app has chosen
 
@@ -28,9 +29,9 @@ function App() {
     setchoice(clicked);
   };
 
-  //if this fumction is called the showRules state will turn to false and Rules compoment will not/stop be rendered
-  const closeRules = () => {
-    setShow(false);
+  //if this fumction is called the showRules state will turn to status witch will be either true or false and Rules compoment will not/be rendered
+  const changeRulesStatus = (status) => {
+    setShow(status);
   };
 
   const scorePlusOne = () => {
@@ -39,7 +40,7 @@ function App() {
 
   return (
     <>
-      {showRules && <Rules closeRules={closeRules} />}
+      {showRules && <Rules closeRules={changeRulesStatus} />}
       <div className="container">
         {playerChoosing ? (
           <>
@@ -49,6 +50,7 @@ function App() {
         ) : (
           <p>bruh</p>
         )}
+        <Bottom openRules={changeRulesStatus} />
       </div>
     </>
   );

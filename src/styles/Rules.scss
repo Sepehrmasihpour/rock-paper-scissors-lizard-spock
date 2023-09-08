@@ -19,13 +19,16 @@
     justify-content: space-between;
     font-weight: bolder;
     align-items: center;
-    transition: all 0.6ms;
     h2 {
       margin: 0;
       font-size: 30px;
     }
+    img {
+      transition: all 10ms;
+    }
     img:hover {
       filter: brightness(20%);
+      cursor: pointer;
     }
   }
 }
