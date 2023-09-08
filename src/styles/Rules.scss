@@ -1,0 +1,31 @@
+@use "base";
+
+.rules-container {
+  @include base.fill;
+  @include base.flex-center;
+  z-index: 100;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.rules {
+  background-color: white;
+  padding: 35px 30px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 2%;
+  row-gap: 30px;
+  .rules-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: bolder;
+    align-items: center;
+    transition: all 0.6ms;
+    h2 {
+      margin: 0;
+      font-size: 30px;
+    }
+    img:hover {
+      filter: brightness(20%);
+    }
+  }
+}

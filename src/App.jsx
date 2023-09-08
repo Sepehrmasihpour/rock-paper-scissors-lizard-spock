@@ -7,7 +7,7 @@ import "./App.scss";
 function App() {
   const [score, setSCore] = useState(0); //the overall score of the player
   const [playerChoosing, setChoosing] = useState(true); //for conditionall rendering if the player is choosing or has chosen
-  const [showRules, setShow] = useState(false); //if true the rules will show
+  const [showRules, setShow] = useState(true); //if true the rules will show
   const [choice, setchoice] = useState(""); //the option that the player has chosen
   const [appChoice, setAppChoice] = useState(""); //the option that the app has chosen
 
@@ -26,7 +26,11 @@ function App() {
 
   const playerPick = (clicked) => {
     setchoice(clicked);
-    console.log(clicked);
+  };
+
+  //if this fumction is called the showRules state will turn to false and Rules compoment will not/stop be rendered
+  const closeRules = () => {
+    setShow(false);
   };
 
   const scorePlusOne = () => {
@@ -34,18 +38,19 @@ function App() {
   };
 
   return (
-    <div className="container">
-      {showRules && <Rules />}
-      {playerChoosing ? (
-        <>
-          <ScoreBoard score={score} />
-          <Options playerPick={playerPick} />
-          <Rules />
-        </>
-      ) : (
-        <p>bruh</p>
-      )}
-    </div>
+    <>
+      {showRules && <Rules closeRules={closeRules} />}
+      <div className="container">
+        {playerChoosing ? (
+          <>
+            <ScoreBoard score={score} />
+            <Options playerPick={playerPick} />
+          </>
+        ) : (
+          <p>bruh</p>
+        )}
+      </div>
+    </>
   );
 }
 
