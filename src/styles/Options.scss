@@ -37,34 +37,34 @@
   position: relative;
   margin-top: 90px;
   .scissors {
-    @include option-circle(hsl(39, 89%, 49%), auto, auto, 0, auto);
+    @include option-circle(hsl(39, 89%, 49%), auto, auto, 0%, auto);
     margin-top: -40px;
   }
   .scissors:hover {
     @include option-hover(hsl(40, 84%, 53%));
   }
   .paper {
-    @include option-circle(hsl(230, 89%, 62%), auto, 555px, 75px, auto);
+    @include option-circle(hsl(230, 89%, 62%), auto, 36%, 75px, auto);
   }
   .paper:hover {
     @include option-hover(hsl(230, 89%, 65%));
   }
   .rock {
-    @include option-circle(hsl(349, 71%, 52%), auto, 620px, auto, 0px);
+    @include option-circle(hsl(349, 71%, 52%), auto, 40%, auto, 0%);
     margin-bottom: -40px;
   }
   .rock:hover {
     @include option-hover(hsl(349, 70%, 56%));
   }
   .lizard {
-    @include option-circle(hsl(261, 73%, 60%), 620px, auto, auto, 0px);
+    @include option-circle(hsl(261, 73%, 60%), 40%, auto, auto, 0%);
     margin-bottom: -35px;
   }
   .lizard:hover {
     @include option-hover(hsl(261, 72%, 63%));
   }
   .spock {
-    @include option-circle(hsl(189, 59%, 53%), 560px, auto, 72px);
+    @include option-circle(hsl(189, 59%, 53%), 36.5%, auto, 72px);
     img {
       margin-left: 4px;
     }
