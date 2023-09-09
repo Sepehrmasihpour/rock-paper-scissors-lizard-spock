@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import ScoreBoard from "./components/ScoreBoard.jsx";
-import Options from "./components/Options.jsx";
-import Rules from "./components/Rules.jsx";
-import Bottom from "./components/Bottom.jsx";
+import ScoreBoard from "./components/ScoreBoard.jsx"; //the component with the logo anf the scoreboard
+import Options from "./components/Options.jsx"; //the component with the options the player can pick
+import Rules from "./components/Rules.jsx"; //self explanatory
+import Bottom from "./components/Bottom.jsx"; //the bottom part of the app with the rules button
+import Result from "./components/Result.jsx"; //the component with the result of the match
 import "./App.scss";
 
 function App() {
@@ -42,13 +43,13 @@ function App() {
     <>
       {showRules && <Rules closeRules={changeRulesStatus} />}
       <div className="container">
+        <ScoreBoard score={score} />
         {playerChoosing ? (
           <>
-            <ScoreBoard score={score} />
             <Options playerPick={playerPick} />
           </>
         ) : (
-          <p>bruh</p>
+          <Result />
         )}
         <Bottom openRules={changeRulesStatus} />
       </div>
