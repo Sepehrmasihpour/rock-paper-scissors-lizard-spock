@@ -1,12 +1,25 @@
 @use "base";
 
+// Define keyframes for slideInUp animation
+@keyframes slideInUp {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+// Styles for the rules container
 .rules-container {
   @include base.fill;
   @include base.flex-center;
   z-index: 100;
   position: fixed;
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.6);
 }
+
+// Styles for the rules section
 .rules {
   background-color: white;
   padding: 35px 30px;
@@ -14,18 +27,27 @@
   flex-direction: column;
   border-radius: 2%;
   row-gap: 30px;
+  animation: slideInUp 0.5s ease-out forwards;
+
+  // Styles for the rules header
   .rules-header {
     display: flex;
     justify-content: space-between;
     font-weight: bolder;
     align-items: center;
+
+    // Styles for the h2 element
     h2 {
       margin: 0;
       font-size: 30px;
     }
+
+    // Styles for the img element
     img {
       transition: all 10ms;
     }
+
+    // Styles for the img element on hover
     img:hover {
       filter: brightness(20%);
       cursor: pointer;

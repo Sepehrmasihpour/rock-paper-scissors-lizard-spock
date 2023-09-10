@@ -1,11 +1,10 @@
-import "../styles/ScoreBoard.scss";
+import "../styles/Top.scss";
 import logo from "../assets/logo-bonus.svg";
-import { useState } from "react";
 
-function ScoreBoard(props) {
+function Top(props) {
   return (
-    <div className="score-board">
-      <div className="board">
+    <div className="Top">
+      <div className="score-board">
         <img src={logo} alt="bruh" />
         <div>
           <p className="score">score</p>
@@ -16,4 +15,4 @@ function ScoreBoard(props) {
   );
 }
 
-export default ScoreBoard;
+export default Top;

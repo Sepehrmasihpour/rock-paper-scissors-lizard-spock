@@ -1,56 +1,49 @@
 import { useState, useEffect } from "react";
-import ScoreBoard from "./components/ScoreBoard.jsx"; //the component with the logo anf the scoreboard
-import Options from "./components/Options.jsx"; //the component with the options the player can pick
+import Top from "./components/Top.jsx"; //the component with the logo and the scoreboard
+import Middle from "./components/Middle.jsx"; //the component with the options the player can pick
 import Rules from "./components/Rules.jsx"; //self explanatory
 import Bottom from "./components/Bottom.jsx"; //the bottom part of the app with the rules button
-import Result from "./components/Result.jsx"; //the component with the result of the match
 import "./App.scss";
 
+// This is the main App function component
 function App() {
-  const [score, setSCore] = useState(0); //the overall score of the player
-  const [playerChoosing, setChoosing] = useState(true); //for conditionall rendering if the player is choosing or has chosen
-  const [showRules, setShow] = useState(false); //if true the rules will show
-  const [choice, setchoice] = useState(""); //the option that the player has chosen
-  const [appChoice, setAppChoice] = useState(""); //the option that the app has chosen
+  // We are using the useState hook to manage the state of our app
+  const [data, setData] = useState({
+    score: 0,
+    playerChoosing: true,
+    showRules: false,
+    choice: "",
+    appChoice: "",
+  });
 
-  // the options the player can choose and the options that they can beat
-  const options = {
-    scissors: ["paper", "lizard"], //example: scissors beats paper and lizard
-    paper: ["rock", "spock"],
-    rock: ["scissors", "lizard"],
-    lizard: ["spock", "paper"],
-    spock: ["scissors", "rock"],
-  };
-
+  // useEffect hook is used to perform side effects in function components
+  // In this case, we are toggling the playerChoosing state every time data.choice changes
   useEffect(() => {
-    setChoosing((a) => !a);
-  }, [choice]);
+    setData((prevState) => ({
+      ...prevState,
+      playerChoosing: !prevState.playerChoosing,
+    }));
+  }, [data.choice]);
 
+  // This function is used to set the choice of the player
   const playerPick = (clicked) => {
-    setchoice(clicked);
+    setData((prevState) => ({ ...prevState, choice: clicked }));
   };
 
-  //if this fumction is called the showRules state will turn to status witch will be either true or false and Rules compoment will not/be rendered
+  // This function is used to change the visibility of the rules
   const changeRulesStatus = (status) => {
-    setShow(status);
+    setData((prevState) => ({ ...prevState, showRules: status }));
   };
 
-  const scorePlusOne = () => {
-    setSCore((prevScore) => prevScore + 1);
-  };
-
+  // The component returns the JSX to be rendered
+  // It conditionally renders the Rules component and the Options or Result components based on the state
   return (
     <>
-      {showRules && <Rules closeRules={changeRulesStatus} />}
+      {/* If showRules is true, the Rules component is rendered */}
+      {data.showRules && <Rules closeRules={changeRulesStatus} />}
       <div className="container">
-        <ScoreBoard score={score} />
-        {playerChoosing ? (
-          <>
-            <Options playerPick={playerPick} />
-          </>
-        ) : (
-          <Result />
-        )}
+        <Top score={data.score} />
+        <Middle playerPick={playerPick} />
         <Bottom openRules={changeRulesStatus} />
       </div>
     </>
