@@ -7,7 +7,7 @@ import scissors from "../assets/icon-scissors.svg";
 import spock from "../assets/icon-spock.svg";
 import "../styles/Middle.scss";
 
-function Middle({ playerPick }) {
+function Middle(props) {
   const options = [
     { name: "scissors", image: scissors },
     { name: "paper", image: paper },
@@ -16,19 +16,40 @@ function Middle({ playerPick }) {
     { name: "spock", image: spock },
   ];
 
+  const chosenOption = options.find((option) => option.name === props.choice);
+
   return (
     <div className="Middle">
-      <div className="pentagon">
-        <img src={pentagon} alt="" />
-        {options.map((option) => (
-          <Option
-            key={option.name}
-            optionName={option.name}
-            imageSrc={option.image}
-            playerPick={playerPick}
-          />
-        ))}
-      </div>
+      {props.playerChoosing ? (
+        <div className="pentagon">
+          <img src={pentagon} alt="" />
+          {options.map((option) => (
+            <Option
+              key={option.name}
+              optionName={option.name}
+              imageSrc={option.image}
+              playerPick={props.playerPick}
+            />
+          ))}
+        </div>
+      ) : (
+        <>
+          <div className="player-result">
+            <p>YOU PICKED</p>
+            <Option
+              optionName={chosenOption.name}
+              imageSrc={chosenOption.image}
+            />
+          </div>
+          <div className="house-result">
+            <p>THE HOUSE PICKED</p>
+            <Option
+              optionName={chosenOption.name}
+              imageSrc={chosenOption.image}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 }

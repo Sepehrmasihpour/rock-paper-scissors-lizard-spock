@@ -25,6 +25,15 @@ function App() {
     }));
   }, [data.choice]);
 
+  useEffect(() => {
+    if (!data.playerChoosing) {
+      setData((prevState) => ({
+        ...prevState,
+        appChoice: randomOption(),
+      }));
+    }
+  }, [data.playerChoosing]);
+
   // This function is used to set the choice of the player
   const playerPick = (clicked) => {
     setData((prevState) => ({ ...prevState, choice: clicked }));
@@ -35,6 +44,13 @@ function App() {
     setData((prevState) => ({ ...prevState, showRules: status }));
   };
 
+  const randomOption = () => {
+    const options = ["scissors", "rock", "spock", "lizard", "paper"];
+    const randomIndex = Math.floor(Math.random() * options.length);
+    const randomOption = options[randomIndex];
+    return randomOption;
+  };
+
   // The component returns the JSX to be rendered
   // It conditionally renders the Rules component and the Options or Result components based on the state
   return (
@@ -43,7 +59,11 @@ function App() {
       {data.showRules && <Rules closeRules={changeRulesStatus} />}
       <div className="container">
         <Top score={data.score} />
-        <Middle playerPick={playerPick} />
+        <Middle
+          playerPick={playerPick}
+          playerChoosing={data.playerChoosing}
+          choice={data.choice}
+        />
         <Bottom openRules={changeRulesStatus} />
       </div>
     </>
