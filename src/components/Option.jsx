@@ -1,6 +1,6 @@
-function Option({ optionName, imageSrc, playerPick }) {
+function Option({ optionName, imageSrc, handleOptionClick }) {
   return (
-    <div onClick={() => playerPick(optionName)} className={optionName}>
+    <div onClick={() => handleOptionClick(optionName)} className={optionName}>
       <img src={imageSrc} alt={optionName} />
     </div>
   );

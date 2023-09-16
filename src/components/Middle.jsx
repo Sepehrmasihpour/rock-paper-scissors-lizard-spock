@@ -1,52 +1,61 @@
-import Option from "../components/Option";
-import pentagon from "../assets/bg-pentagon.svg";
-import lizard from "../assets/icon-lizard.svg";
-import paper from "../assets/icon-paper.svg";
-import rock from "../assets/icon-rock.svg";
-import scissors from "../assets/icon-scissors.svg";
-import spock from "../assets/icon-spock.svg";
-import "../styles/Middle.scss";
+// Import necessary components, images and stylings
+import Option from "../components/Option"; // 'Option' component used to render each game option
+import pentagon from "../assets/bg-pentagon.svg"; // Background image
+import "../styles/Middle.scss"; // Import stylesheet
 
+// Middle is a functional Component representing the main game area
 function Middle(props) {
-  const options = [
-    { name: "scissors", image: scissors },
-    { name: "paper", image: paper },
-    { name: "rock", image: rock },
-    { name: "lizard", image: lizard },
-    { name: "spock", image: spock },
-  ];
-
-  const chosenOption = options.find((option) => option.name === props.choice);
+  const options = props.options;
+  const appChoice = props.appChoice;
+  const playerChoice = props.playerChoice;
+  const playerWon = props.playerWon;
 
   return (
+    // 'Middle' div wrapping the game area
     <div className="Middle">
-      {props.playerChoosing ? (
+      {props.isChoosing ? (
+        // If player is choosing, render the pentagon game layout
         <div className="pentagon">
           <img src={pentagon} alt="" />
+          {/* Map through options array to render each game option */}
           {options.map((option) => (
             <Option
               key={option.name}
               optionName={option.name}
               imageSrc={option.image}
-              playerPick={props.playerPick}
+              handleOptionClick={props.handleOptionClick}
             />
           ))}
         </div>
       ) : (
         <>
-          <div className="player-result">
-            <p>YOU PICKED</p>
-            <Option
-              optionName={chosenOption.name}
-              imageSrc={chosenOption.image}
-            />
+          {/* If player has chosen, show what the player and 'house' picked */}
+          <div className="result-left">
+            <div className="player-result">
+              <p>YOU PICKED</p>
+              {/* Display the chosen option */}
+              <Option
+                optionName={playerChoice.name}
+                imageSrc={playerChoice.image}
+              />
+            </div>
           </div>
-          <div className="house-result">
-            <p>THE HOUSE PICKED</p>
-            <Option
-              optionName={chosenOption.name}
-              imageSrc={chosenOption.image}
-            />
+          <div className="result-middle">
+            <div className="game-message">
+              {playerWon ? <h1>YOU WIN</h1> : <h1>YOU LOSE</h1>}
+              <button onClick={props.playAgain}>PLAY AGAIN</button>
+            </div>
+          </div>
+          <div className="reult-right">
+            <div className="house-result">
+              <p>THE HOUSE PICKED</p>
+              {/* In real game, the house option should be determined by the game engine/logic */}
+              <Option
+                optionName={appChoice.name}
+                imageSrc={appChoice.image}
+                handleOptionClick={() => {}} //empty function on purpose
+              />
+            </div>
           </div>
         </>
       )}
@@ -54,4 +63,5 @@ function Middle(props) {
   );
 }
 
+// Export 'Middle' component so it can be imported and used in other files
 export default Middle;

@@ -1,73 +1,101 @@
-import { useState, useEffect } from "react";
-import Top from "./components/Top.jsx"; //the component with the logo and the scoreboard
-import Middle from "./components/Middle.jsx"; //the component with the options the player can pick
-import Rules from "./components/Rules.jsx"; //self explanatory
-import Bottom from "./components/Bottom.jsx"; //the bottom part of the app with the rules button
+import { useEffect, useState } from "react";
+import Top from "./components/Top.jsx";
+import Middle from "./components/Middle.jsx";
+import Rules from "./components/Rules.jsx";
+import Bottom from "./components/Bottom.jsx";
+import lizard from "./assets/icon-lizard.svg";
+import paper from "./assets/icon-paper.svg";
+import rock from "./assets/icon-rock.svg";
+import scissors from "./assets/icon-scissors.svg";
+import spock from "./assets/icon-spock.svg";
 import "./App.scss";
 
-// This is the main App function component
-function App() {
-  // We are using the useState hook to manage the state of our app
-  const [data, setData] = useState({
-    score: 0,
-    playerChoosing: true,
-    showRules: false,
-    choice: "",
-    appChoice: "",
-  });
+// Game options defined outside of the App component
+const gameOptions = [
+  { name: "scissors", image: scissors, canDefeat: ["paper", "lizard"] },
+  { name: "paper", image: paper, canDefeat: ["rock", "spock"] },
+  { name: "rock", image: rock, canDefeat: ["scissors", "lizard"] },
+  { name: "lizard", image: lizard, canDefeat: ["paper", "spock"] },
+  { name: "spock", image: spock, canDefeat: ["scissors", "rock"] },
+];
 
-  // useEffect hook is used to perform side effects in function components
-  // In this case, we are toggling the playerChoosing state every time data.choice changes
-  useEffect(() => {
-    setData((prevState) => ({
-      ...prevState,
-      playerChoosing: !prevState.playerChoosing,
-    }));
-  }, [data.choice]);
-
-  useEffect(() => {
-    if (!data.playerChoosing) {
-      setData((prevState) => ({
-        ...prevState,
-        appChoice: randomOption(),
-      }));
+const whoWon = (playerChoice, appChoice) => {
+  let playerWon = true;
+  const choice1 = playerChoice;
+  const choice2 = appChoice;
+  const choice1Name = choice1.name;
+  const choice2CanDefeat = choice2.canDefeat;
+  if (choice1 === choice2) {
+    playerWon = false;
+  } else {
+    for (const item of choice2CanDefeat) {
+      if (item === choice1Name) {
+        playerWon = false;
+      }
     }
-  }, [data.playerChoosing]);
+  }
+  return playerWon;
+};
 
-  // This function is used to set the choice of the player
-  const playerPick = (clicked) => {
-    setData((prevState) => ({ ...prevState, choice: clicked }));
+const scoreIncrease = (playerWon, setScore) => {
+  if (playerWon) {
+    setScore((prevScore) => prevScore + 1);
+  }
+};
+
+// Function to select a random option
+const getRandomOption = (options) => {
+  const randomIndex = Math.floor(Math.random() * options.length);
+  return options[randomIndex];
+};
+
+const App = () => {
+  const [score, setScore] = useState(0);
+  const [isChoosing, setIsChoosing] = useState(true);
+  const [showRules, setShowRules] = useState(false);
+  const [playerChoice, setPlayerChoice] = useState("");
+  const [appChoice, setAppChoice] = useState("");
+  const [playerWon, setPlayerWon] = useState(false);
+
+  useEffect(() => {
+    scoreIncrease(playerWon, setScore);
+  }, [appChoice]);
+
+  const toggleRules = (status) => {
+    setShowRules(status);
   };
 
-  // This function is used to change the visibility of the rules
-  const changeRulesStatus = (status) => {
-    setData((prevState) => ({ ...prevState, showRules: status }));
+  const handleOptionClick = (clicked) => {
+    const playerChoice = gameOptions.find((option) => option.name === clicked);
+    const appChoice = getRandomOption(gameOptions);
+    setPlayerChoice(playerChoice);
+    setAppChoice(appChoice);
+    setIsChoosing(false);
+    setPlayerWon(whoWon(playerChoice, appChoice));
   };
 
-  const randomOption = () => {
-    const options = ["scissors", "rock", "spock", "lizard", "paper"];
-    const randomIndex = Math.floor(Math.random() * options.length);
-    const randomOption = options[randomIndex];
-    return randomOption;
+  const PlayAgain = () => {
+    setIsChoosing(true);
   };
 
-  // The component returns the JSX to be rendered
-  // It conditionally renders the Rules component and the Options or Result components based on the state
   return (
     <>
-      {/* If showRules is true, the Rules component is rendered */}
-      {data.showRules && <Rules closeRules={changeRulesStatus} />}
+      {showRules && <Rules closeRules={toggleRules} />}
       <div className="container">
-        <Top score={data.score} />
+        <Top score={score} />
         <Middle
-          playerPick={playerPick}
-          playerChoosing={data.playerChoosing}
-          choice={data.choice}
+          handleOptionClick={handleOptionClick}
+          isChoosing={isChoosing}
+          playerChoice={playerChoice}
+          appChoice={appChoice}
+          options={gameOptions}
+          playerWon={playerWon}
+          playAgain={PlayAgain}
         />
-        <Bottom openRules={changeRulesStatus} />
+        <Bottom openRules={toggleRules} />
       </div>
     </>
   );
-}
+};
 
 export default App;
