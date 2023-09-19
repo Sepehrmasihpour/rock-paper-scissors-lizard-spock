@@ -5,6 +5,7 @@
 ## Table of Contents
 
 - [Installation](#installation)
+- [About](#about)
 - [Usage](#usage)
 - [Contributing](#contributing)
 - [Contact](#contact)
@@ -14,11 +15,29 @@
 1. Clone the repo: `git clone https://github.com/your-username/your-repo.git`
 2. Install dependencies: `npm install`
 
+## About
+
+This is a simple game built with React and Sass where players can engage in a variation of the classic game of Rock Paper Scissors. In addition to the traditional options of rock, paper, and scissors, players can also choose from the lizard and Spock options, adding an extra layer of strategy and excitement to the game.
+
+The game works by allowing the player to select one of the five options, and then the game randomly selects an option as well. The choices are then compared to determine the winner based on the rules of the game. The result is displayed to the player, indicating whether they won, lost, or it was a tie.
+
+This project was developed as practice to improve my capabilities in React and Sass and building dynamic web applications. It demonstrates the use of state management, event handling, and conditional rendering to create an engaging user experience.
+
+The design of the app is from [front end mentor](https://www.frontendmentor.io).
+
+Feel free to explore the code and customize it to suit your needs. Enjoy playing Rock Paper Scissor Lizard Spock!
+
 ## Usage
 
 After installation, run the application with npm run dev.
 
 Once the application opens, you will immediately be presented with the five options. Simply choose one, and the game will randomly select the other option. The game will then determine the winner and display the result. If you need to learn the rules of the game, you can click the "Rules" button at the bottom of the page.
+
+![Screenshot](public/openning.png)
+
+![Screenshot](public/compare.png)
+
+![Screenshot](public/Rules.png)
 
 ## Contributing
 
