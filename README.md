@@ -35,9 +35,9 @@ Once the application opens, you will immediately be presented with the five opti
 
 ![Screenshot](public/openning.png)
 
-![Screenshot](public/compare.png)
+![Screenshot](public/compare.PNG)
 
-![Screenshot](public/Rules.png)
+![Screenshot](public/Rules.PNG)
 
 ## Contributing
 
