@@ -23,7 +23,7 @@ The game works by allowing the player to select one of the five options, and the
 
 This project was developed as practice to improve my capabilities in React and Sass and building dynamic web applications. It demonstrates the use of state management, event handling, and conditional rendering to create an engaging user experience.
 
-The design of the app is from [front end mentor](https://www.frontendmentor.io).
+The design of the app is from [front end mentor](https://www.frontendmentor.io) .
 
 Feel free to explore the code and customize it to suit your needs. Enjoy playing Rock Paper Scissor Lizard Spock!
 
@@ -33,11 +33,14 @@ After installation, run the application with npm run dev.
 
 Once the application opens, you will immediately be presented with the five options. Simply choose one, and the game will randomly select the other option. The game will then determine the winner and display the result. If you need to learn the rules of the game, you can click the "Rules" button at the bottom of the page.
 
-![Screenshot](public/openning.png)
+### pictures of the game
 
-![Screenshot](public/compare.PNG)
-
-![Screenshot](public/Rules.PNG)
+- the five option of the game being presented
+  ![Screenshot](public/openning.png)
+- What the player has picked vs what the game has picked
+  ![Screenshot](public/compare.PNG)
+- Rules of the game
+  ![Screenshot](public/Rules.PNG)
 
 ## Contributing
 
