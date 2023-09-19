@@ -22,12 +22,14 @@ Once the application opens, you will immediately be presented with the five opti
 
 ## Contributing
 
+<sub>Note: This section is included for completeness. We don't anticipate contributions, but you're welcome to try.</sub>
+
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
-   (Note: This section is included for completeness. We don't anticipate contributions, but you're welcome to try.)
+   note.
 
 ## Contact
 
