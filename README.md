@@ -12,7 +12,7 @@
 
 ## Installation
 
-1. Clone the repo: `git clone https://github.com/your-username/your-repo.git`
+1. Clone the repo: `git clone https://github.com/Sepehrmasihpour/rock-paper-scissors.git`
 2. Install dependencies: `npm install`
 
 ## About
