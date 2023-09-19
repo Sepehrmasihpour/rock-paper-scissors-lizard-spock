@@ -36,10 +36,15 @@ Once the application opens, you will immediately be presented with the five opti
 ### pictures of the game
 
 - the five option of the game being presented
+
   ![Screenshot](public/openning.png)
+
 - What the player has picked vs what the game has picked
+
   ![Screenshot](public/compare.PNG)
+
 - Rules of the game
+
   ![Screenshot](public/Rules.PNG)
 
 ## Contributing
