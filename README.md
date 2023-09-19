@@ -50,7 +50,7 @@ Once the application opens, you will immediately be presented with the five opti
 
 ## Contributing
 
-<sub>Note: This section is included for completeness. We don't anticipate contributions, but you're welcome to try.</sub>
+<sub>Note: This section is included for completeness. I don't anticipate contributions, but you're welcome to try.</sub>
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
