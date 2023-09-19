@@ -1,6 +1,6 @@
 # Rock Paper Scissor Lizard Spock
 
-> This is a simple game where the player can choose from one of the five options (the five mentioned in the title). After the player makes a choice, the game randomly selects an option, and the two options are compared to determine the winner.
+> This is a simple game where the player can choose from one of the five options (rock, paper, scissor, lizard, or Spock). After the player makes a choice, the game randomly selects an option, and the two choices are compared to determine the winner.
 
 ## Table of Contents
 
