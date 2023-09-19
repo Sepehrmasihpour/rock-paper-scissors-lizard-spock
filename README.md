@@ -14,6 +14,7 @@
 
 1. Clone the repo: `git clone https://github.com/Sepehrmasihpour/rock-paper-scissors.git`
 2. Install dependencies: `npm install`
+3. Note that this application is meant for desktop and is not yet available on phone-sized screens. If time permits, I will upgrade it to support both. But for now, it is only optimized for desktop.
 
 ## About
 
@@ -37,15 +38,15 @@ Once the application opens, you will immediately be presented with the five opti
 
 - the five option of the game being presented
 
-  ![Screenshot](public/openning.png)
+  ![Screenshot of the openning of the app and the options that the  player gets](public/openning.png)
 
 - What the player has picked vs what the game has picked
 
-  ![Screenshot](public/compare.PNG)
+  ![Screenshot of the option the player picked vs the option that the game picked](public/compare.PNG)
 
 - Rules of the game
 
-  ![Screenshot](public/Rules.PNG)
+  ![Screenshot of the Rules of the game](public/Rules.PNG)
 
 ## Contributing
 
