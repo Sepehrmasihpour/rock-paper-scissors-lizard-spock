@@ -5,103 +5,79 @@
 $option-colors: (
   "scissors": (
     border: hsl(39, 89%, 49%),
-    // Border color for scissors
     hover: hsl(40, 84%, 48%),
-    // Hover color for scissors
-    position:
-      (
-        // Position for scissors
-        auto,
-        auto,
-        0%,
-        auto,
-        -40px,
-        auto,
-      ),
+    position: (
+      auto,
+      auto,
+      0%,
+      auto,
+      -40px,
+      auto,
+    ),
   ),
   "paper": (
     border: hsl(230, 89%, 62%),
-    // Border color for paper
     hover: hsl(230, 89%, 65%),
-    // Hover color for paper
-    position:
-      (
-        // Position for paper
-        auto,
-        36%,
-        75px,
-        auto,
-        auto,
-        auto,
-      ),
+    position: (
+      auto,
+      36%,
+      75px,
+      auto,
+      auto,
+      auto,
+    ),
   ),
   "rock": (
     border: hsl(349, 71%, 52%),
-    // Border color for rock
     hover: hsl(349, 70%, 56%),
-    // Hover color for rock
-    position:
-      (
-        // Position for rock
-        auto,
-        40%,
-        auto,
-        0%,
-        auto,
-        -40px,
-      ),
+    position: (
+      auto,
+      40%,
+      auto,
+      0%,
+      auto,
+      -40px,
+    ),
   ),
   "lizard": (
     border: hsl(261, 73%, 60%),
-    // Border color for lizard
     hover: hsl(261, 72%, 63%),
-    // Hover color for lizard
-    position:
-      (
-        // Position for lizard
-        40%,
-        auto,
-        auto,
-        0%,
-        auto,
-        -35px,
-      ),
+    position: (
+      40%,
+      auto,
+      auto,
+      0%,
+      auto,
+      -35px,
+    ),
   ),
   "spock": (
     border: hsl(189, 59%, 53%),
-    // Border color for spock
     hover: hsl(189, 58%, 57%),
-    // Hover color for spock
-    position:
-      (
-        // Position for spock
-        36.5%,
-        auto,
-        72px,
-        auto,
-        auto,
-        auto,
-      ),
+    position: (
+      36.5%,
+      auto,
+      72px,
+      auto,
+      auto,
+      auto,
+    ),
   ),
 );
 
-// Mixin for creating an option circle
+$option-animation-time: 2s;
+
 @mixin option-circle(
   $border-color: black,
-  // Border color of the circle
-  $left: auto,
-  // Left position of the circle
-  $right: auto,
-  // Right position of the circle
-  $top: auto,
-  // Top position of the circle
-  $bottom: auto,
-  // Bottom position of the circle
-  $margin-top: auto,
-  // Top margin of the circle
-  $margin-bottom: auto // Bottom margin of the circle
+  $position: (
+    auto,
+    auto,
+    auto,
+    auto,
+    auto,
+    auto,
+  )
 ) {
-  // Styles for the option circle
   @include base.flex-center;
   position: absolute;
   background-color: white;
@@ -109,51 +85,130 @@ $option-colors: (
   height: 85px;
   border-radius: 50%;
   border: 13px solid;
-  box-shadow: 0px 4px 0px rgba(0, 0, 0, 0.2) inset;
+  box-shadow: 0px 5px 0px rgba(0, 0, 0, 0.2) inset;
   transition: all 10ms;
   border-color: $border-color;
-  left: $left;
-  right: $right;
-  top: $top;
-  bottom: $bottom;
-  margin-top: $margin-top;
-  margin-bottom: $margin-bottom;
+  left: nth($position, 1);
+  right: nth($position, 2);
+  top: nth($position, 3);
+  bottom: nth($position, 4);
+  margin-top: nth($position, 5);
+  margin-bottom: nth($position, 6);
 
   img {
-    width: 50px; // Set the width of the image inside the circle
+    width: 50px;
   }
 }
 
-// Mixin for hover effect on option circle
 @mixin option-hover($border-color: white) {
-  // Border color on hover
   &:hover {
     border-color: $border-color;
     cursor: pointer;
   }
 }
 
-// Styles for the pentagon container
+@mixin result-option-circle {
+  position: static;
+  margin: 0;
+  width: 175px;
+  height: 175px;
+  border-width: 25px;
+  pointer-events: none;
+  box-shadow: 0px 10px 0px rgba(0, 0, 0, 0.2) inset;
+
+  img {
+    width: 100px;
+  }
+  &:hover {
+    pointer-events: none;
+  }
+}
+
+@keyframes slideInRight {
+  0% {
+    transform: translateX(140%);
+    filter: brightness(0);
+  }
+  100% {
+    transform: translateX(0);
+    filter: brightness(0);
+  }
+}
+
+@keyframes appear {
+  0% {
+    transform: scale(0);
+    display: none;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
 .pentagon {
-  @include base.flex-center; // Apply the flex-center mixin from base
+  @include base.flex-center;
   position: relative;
   margin-top: 90px;
+}
 
-  // Generate styles for each game option
-  @each $option, $colors in $option-colors {
-    .#{$option} {
-      // Apply the option circle mixin with the game option's colors and positions
-      @include option-circle(
-        map-get($colors, "border"),
-        nth(map-get($colors, "position"), 1),
-        nth(map-get($colors, "position"), 2),
-        nth(map-get($colors, "position"), 3),
-        nth(map-get($colors, "position"), 4),
-        nth(map-get($colors, "position"), 5),
-        nth(map-get($colors, "position"), 6)
-      );
-      // Apply the hover effect mixin with the game option's hover color
-      @include option-hover(map-get($colors, "hover"));
+@each $option, $colors in $option-colors {
+  .#{$option} {
+    @include option-circle(
+      map-get($colors, "border"),
+      map-get($colors, "position")
+    );
+    @include option-hover(map-get($colors, "hover"));
+  }
+}
+
+.spock {
+  img {
+    margin-left: 10px;
+  }
+}
+
+.Middle-result {
+  @include base.flex-center;
+  column-gap: 100px;
+  color: white;
+
+  .game-message {
+    display: grid;
+    row-gap: 10px;
+    align-items: center;
+    justify-content: center;
+    margin-top: 70px;
+    animation: appear $option-animation-time + 0.3 step-end;
+
+    h1 {
+      font-size: 50px;
+      margin: 0;
     }
+    button {
+      height: 40px;
+      border-radius: 10px;
+      color: hsl(214, 47%, 23%);
+      font-size: large;
+      font-weight: 400;
+    }
+  }
+}
+
+.choice {
+  @include base.flex-center;
+  flex-direction: column;
+  p {
+    margin-top: 0;
+    margin-bottom: 60px;
+    font-size: 30px;
+    font-weight: 700;
+  }
+  div {
+    @include result-option-circle;
+  }
+}
+#app-choice {
+  div {
+    animation: slideInRight $option-animation-time;
   }
 }

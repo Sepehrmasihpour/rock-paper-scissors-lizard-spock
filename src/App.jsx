@@ -27,23 +27,25 @@ const gameOptions = [
 // Function to determine the winner, returns true if player wins
 const whoWon = (playerChoice, appChoice) => {
   let playerWon = true;
-  if (playerChoice === appChoice) {
-    playerWon = false;
-  }
   playerWon = !appChoice.canDefeat.includes(playerChoice.name);
   return playerWon;
 };
 
 // Function to increase the score if player wins
 const scoreIncrease = (playerWon, setScore) => {
-  if (playerWon) {
-    setScore((prevScore) => prevScore + 1);
-  }
+  setTimeout(function () {
+    if (playerWon) {
+      setScore((prevScore) => prevScore + 1);
+    }
+  }, 2300);
 };
 
 // Function to select a random option from the game options
-const getRandomOption = (options) => {
+const getRandomOption = (options, chosenOption) => {
   const randomIndex = Math.floor(Math.random() * options.length);
+  if (options[randomIndex] === chosenOption) {
+    return getRandomOption(options, chosenOption);
+  }
   return options[randomIndex];
 };
 
@@ -70,7 +72,7 @@ const App = () => {
   // Function to handle option click and game logic
   const handleOptionClick = (clicked) => {
     const playerChoice = gameOptions.find((option) => option.name === clicked);
-    const appChoice = getRandomOption(gameOptions);
+    const appChoice = getRandomOption(gameOptions, playerChoice);
     setPlayerChoice(playerChoice);
     setAppChoice(appChoice);
     setIsChoosing(false);
