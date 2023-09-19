@@ -24,7 +24,7 @@ The game works by allowing the player to select one of the five options, and the
 
 This project was developed as practice to improve my capabilities in React and Sass and building dynamic web applications. It demonstrates the use of state management, event handling, and conditional rendering to create an engaging user experience.
 
-The design of the app is from [front end mentor](https://www.frontendmentor.io) .
+The design of the app is from [frontend Mentor](https://www.frontendmentor.io) .
 
 Feel free to explore the code and customize it to suit your needs. Enjoy playing Rock Paper Scissor Lizard Spock!
 
